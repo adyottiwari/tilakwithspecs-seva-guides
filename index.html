@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haveli Sangeet — Raag Guide | Pushtimarg</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #E8874A;
+    --deep-saffron: #C4612A;
+    --gold: #D4A44C;
+    --gold-light: #F0C976;
+    --crimson: #8B1A2E;
+    --ivory: #F7F0E6;
+    --ink: #1A1208;
+    --warm-brown: #4A2C0A;
+    --ash: #8C7B6B;
+    --parchment: #EDE0CC;
+    --lotus-pink: #C4717A;
+    --deep-teal: #1D4A47;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: var(--ink);
+    color: var(--ivory);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  .bg-layer {
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(232,135,74,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 80%, rgba(139,26,46,0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 100% at 50% 50%, rgba(26,18,8,1) 30%, rgba(30,22,10,1) 100%);
+  }
+
+  .mandala-bg {
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px; height: 900px;
+    opacity: 0.03;
+    animation: slowSpin 140s linear infinite;
+    z-index: 0; pointer-events: none;
+  }
+
+  @keyframes slowSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  main { position: relative; z-index: 1; max-width: 920px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── HEADER ── */
+  .header-wrap {
+    text-align: center; padding: 60px 24px 40px;
+    position: relative; z-index: 1;
+  }
+
+  .handle-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 0.35em; color: var(--saffron);
+    border: 1px solid rgba(232,135,74,0.35);
+    padding: 7px 20px; border-radius: 2px; margin-bottom: 22px;
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+  .handle-tag:hover {
+    background: rgba(232,135,74,0.1);
+    border-color: rgba(232,135,74,0.7);
+    box-shadow: 0 0 18px rgba(232,135,74,0.2);
+  }
+
+  .om-symbol {
+    font-size: 64px; color: var(--gold);
+    filter: drop-shadow(0 0 18px rgba(212,164,76,0.4));
+    animation: pulseGlow 4s ease-in-out infinite;
+    display: block; font-family: 'Cormorant Garamond', serif; margin-bottom: 20px;
+  }
+  @keyframes pulseGlow {
+    0%,100% { filter: drop-shadow(0 0 18px rgba(212,164,76,0.35)); }
+    50%      { filter: drop-shadow(0 0 40px rgba(212,164,76,0.70)); }
+  }
+
+  .main-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 5vw, 54px); font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 45%, var(--saffron) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    line-height: 1.1; margin-bottom: 10px;
+  }
+  .main-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(15px, 2.5vw, 21px); font-style: italic;
+    color: var(--ash); margin-bottom: 14px; line-height: 1.6;
+  }
+  .hindi-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; color: rgba(212,164,76,0.75); font-style: italic; margin-bottom: 30px;
+  }
+
+  .decorative-border {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,164,76,0.35) 30%, rgba(232,135,74,0.35) 50%, rgba(212,164,76,0.35) 70%, transparent);
+    margin: 0 auto 40px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header { text-align: center; margin-bottom: 28px; margin-top: 52px; }
+  .section-label {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 0.5em; text-transform: uppercase;
+    color: var(--saffron); opacity: 0.8; display: block; margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3.5vw, 38px); font-weight: 300;
+    color: var(--ivory); line-height: 1.2;
+  }
+  .section-title strong { font-weight: 600; color: var(--gold); }
+
+  /* ── INTRO CARD ── */
+  .intro-card {
+    background: linear-gradient(135deg, rgba(232,135,74,0.07), rgba(212,164,76,0.04));
+    border: 1px solid rgba(212,164,76,0.2);
+    border-radius: 4px; padding: 30px 32px; margin-bottom: 40px;
+    transition: border-color 0.4s, box-shadow 0.4s;
+  }
+  .intro-card:hover {
+    border-color: rgba(212,164,76,0.45);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.35), 0 0 30px rgba(212,164,76,0.06);
+  }
+  .intro-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; color: rgba(247,240,230,0.85);
+    line-height: 1.85; margin-bottom: 14px;
+  }
+  .intro-card p:last-child { margin-bottom: 0; }
+  .intro-card .hindi { color: var(--gold); font-size: 16px; font-style: italic; }
+
+  /* ── OVERVIEW TABLE ── */
+  .overview-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(212,164,76,0.08);
+    transition: background 0.25s, padding-left 0.25s;
+    cursor: default;
+  }
+  .overview-row:hover { background: rgba(212,164,76,0.06); padding-left: 26px; }
+  .overview-row:last-child { border-bottom: none; }
+  .ov-time  { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.1em; color:var(--ash); min-width:104px; }
+  .ov-name  { font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--ivory); font-weight:600; min-width:140px; }
+  .ov-hindi { font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic; color:var(--gold); opacity:.8; flex:1; }
+  .ov-raags { font-family:'DM Sans',sans-serif; font-size:12px; color:var(--ash); text-align:right; min-width:130px; }
+  @media(max-width:600px){ .ov-raags,.ov-time{ display:none; } }
+
+  /* ── DARSHAN CARD ── */
+  .darshan-card {
+    position: relative;
+    border: 1px solid rgba(212,164,76,0.15);
+    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border-radius: 4px; overflow: hidden; margin-bottom: 32px;
+    transition: transform 0.4s cubic-bezier(.2,.8,.3,1), border-color 0.4s, box-shadow 0.4s;
+  }
+  .darshan-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212,164,76,0.45);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(232,135,74,0.08);
+  }
+  .darshan-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    transition: height 0.3s;
+  }
+  .darshan-card:hover::before { height: 4px; }
+
+  .card-mangala::before  { background: linear-gradient(90deg,#7B9EBE,#A8C5D8); }
+  .card-shringar::before { background: linear-gradient(90deg,var(--lotus-pink),#E0A0A8); }
+  .card-gwal::before     { background: linear-gradient(90deg,#6B9E6B,#9EC99E); }
+  .card-rajbhog::before  { background: linear-gradient(90deg,var(--gold),var(--gold-light)); }
+  .card-utthapan::before { background: linear-gradient(90deg,var(--saffron),#F0A870); }
+  .card-bhog::before     { background: linear-gradient(90deg,var(--deep-saffron),var(--saffron)); }
+  .card-sandhya::before  { background: linear-gradient(90deg,var(--crimson),#C0405A); }
+  .card-shayan::before   { background: linear-gradient(90deg,#3A2A5A,#6A4A9A); }
+
+  .card-body { padding: 28px 28px 26px; }
+
+  .card-top {
+    display:flex; align-items:flex-start;
+    justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:18px;
+  }
+  .card-number {
+    font-family:'Cinzel',serif; font-size:10px;
+    letter-spacing:.2em; color:var(--gold); opacity:.55;
+  }
+  .time-badge {
+    font-family:'Cinzel',serif; font-size:10px; letter-spacing:.15em;
+    color:var(--ash); border:1px solid rgba(140,123,107,0.3);
+    padding:3px 10px; border-radius:2px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .darshan-card:hover .time-badge {
+    border-color: rgba(212,164,76,0.5); color: var(--gold);
+  }
+  .darshan-name {
+    font-family:'Cinzel',serif; font-size:clamp(17px,2.5vw,22px);
+    font-weight:600; color:var(--ivory); margin-bottom:4px; letter-spacing:.03em;
+  }
+  .darshan-hindi {
+    font-family:'Cormorant Garamond',serif; font-size:16px;
+    font-style:italic; color:var(--gold); margin-bottom:14px; opacity:.85;
+  }
+  .darshan-desc {
+    font-family:'Cormorant Garamond',serif; font-size:16.5px;
+    color:var(--ash); line-height:1.8; margin-bottom:20px;
+  }
+
+  /* ── RAAG PILLS ── */
+  .raag-section-label {
+    font-family:'Cinzel',serif; font-size:9px; letter-spacing:.4em;
+    text-transform:uppercase; color:var(--gold); opacity:.6;
+    margin-bottom:12px; display:block;
+  }
+  .raag-pills { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+  .raag-pill {
+    font-family:'Cormorant Garamond',serif; font-size:15px; color:var(--ivory);
+    background:rgba(212,164,76,0.1); border:1px solid rgba(212,164,76,0.25);
+    padding:5px 14px; border-radius:2px;
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.2s;
+    cursor: default;
+  }
+  .raag-pill:hover {
+    background: rgba(232,135,74,0.18);
+    border-color: rgba(232,135,74,0.55);
+    color: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  /* ── BHAV GRID ── */
+  .bhav-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:20px; }
+  @media(max-width:600px){ .bhav-grid{ grid-template-columns:1fr; } }
+  .bhav-cell {
+    background:rgba(0,0,0,0.25); border:1px solid rgba(212,164,76,0.1);
+    border-radius:3px; padding:11px 14px;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+  }
+  .bhav-cell:hover {
+    background: rgba(212,164,76,0.08);
+    border-color: rgba(212,164,76,0.3);
+    transform: translateY(-2px);
+  }
+  .bhav-key {
+    font-family:'Cinzel',serif; font-size:9px; letter-spacing:.2em;
+    color:var(--ash); opacity:.7; display:block; margin-bottom:5px; text-transform:uppercase;
+  }
+  .bhav-val {
+    font-family:'Cormorant Garamond',serif; font-size:15px; color:var(--ivory); line-height:1.6;
+  }
+
+  /* ── EXAMPLE / KIRTAN BOX ── */
+  .example-box {
+    background:rgba(232,135,74,0.05); border-left:2px solid var(--saffron);
+    padding:16px 20px; border-radius:0 3px 3px 0; margin-top:4px;
+    transition: background 0.3s, border-left-color 0.3s;
+  }
+  .example-box:hover {
+    background: rgba(232,135,74,0.10);
+    border-left-color: var(--gold-light);
+  }
+  .example-label {
+    font-family:'Cinzel',serif; font-size:9px; letter-spacing:.35em;
+    text-transform:uppercase; color:var(--saffron); opacity:.7;
+    display:block; margin-bottom:7px;
+  }
+  .example-text {
+    font-family:'Cormorant Garamond',serif; font-size:15.5px;
+    font-style:italic; color:rgba(247,240,230,0.8); line-height:1.7;
+  }
+  .example-text .hindi-eg { color:var(--gold); font-style:italic; }
+
+  /* ── KIRTAN BLOCK — new special box ── */
+  .kirtan-block {
+    background: linear-gradient(135deg, rgba(212,164,76,0.07), rgba(232,135,74,0.04));
+    border: 1px solid rgba(212,164,76,0.2);
+    border-radius: 4px; padding: 20px 22px; margin-top: 18px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.35s, box-shadow 0.35s, background 0.35s;
+  }
+  .kirtan-block::before {
+    content: '❧';
+    position: absolute; top: 12px; right: 16px;
+    font-size: 22px; color: var(--gold); opacity: 0.2;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .kirtan-block:hover {
+    border-color: rgba(212,164,76,0.42);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.35), 0 0 20px rgba(212,164,76,0.07);
+    background: linear-gradient(135deg, rgba(212,164,76,0.11), rgba(232,135,74,0.07));
+  }
+  .kirtan-block:hover::before { opacity: 0.5; transform: rotate(15deg) scale(1.1); }
+
+  .kirtan-label {
+    font-family:'Cinzel',serif; font-size:9px; letter-spacing:.4em;
+    text-transform:uppercase; color:var(--gold); opacity:.65;
+    display:block; margin-bottom:14px;
+  }
+  .kirtan-title {
+    font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic;
+    color:var(--saffron); margin-bottom:10px; opacity:.9;
+  }
+  .kirtan-lines {
+    font-family:'Cormorant Garamond',serif; font-size:16px;
+    color:rgba(247,240,230,0.85); line-height:1.9;
+    border-left: 1px dashed rgba(212,164,76,0.25); padding-left:16px;
+  }
+  .kirtan-lines .antra { color:var(--gold); font-style:italic; font-size:14.5px; }
+
+  /* ── BHAV TAGS ── */
+  .bhav-tags { display:flex; flex-wrap:wrap; gap:7px; margin:14px 0; }
+  .bhav-tag {
+    font-family:'Cinzel',serif; font-size:9px; letter-spacing:.2em;
+    padding:4px 11px; border-radius:2px; text-transform:uppercase;
+    border:1px solid rgba(212,164,76,0.2); color:var(--ash);
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.2s;
+    cursor: default;
+  }
+  .bhav-tag:hover {
+    background: rgba(212,164,76,0.12);
+    border-color: rgba(212,164,76,0.5);
+    color: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  /* ── DIVIDER ── */
+  .divider-ornament {
+    display:flex; align-items:center; gap:14px; margin:0 auto 36px; opacity:.45;
+  }
+  .divider-ornament::before,.divider-ornament::after {
+    content:''; flex:1; height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold));
+  }
+  .divider-ornament::after{ background:linear-gradient(270deg,transparent,var(--gold)); }
+  .divider-ornament span { color:var(--gold); font-size:16px; }
+
+  /* ── INFO COLUMNS ── */
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+  @media(max-width:600px){ .two-col{ grid-template-columns:1fr; } }
+
+  .info-box {
+    background:rgba(0,0,0,0.25); border:1px solid rgba(212,164,76,0.12);
+    border-radius:3px; padding:16px 18px;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+  }
+  .info-box:hover {
+    background: rgba(212,164,76,0.07);
+    border-color: rgba(212,164,76,0.35);
+    transform: translateY(-3px);
+  }
+  .info-box-title {
+    font-family:'Cinzel',serif; font-size:10px; letter-spacing:.25em;
+    text-transform:uppercase; color:var(--gold); opacity:.7; display:block; margin-bottom:10px;
+  }
+  .info-box-text {
+    font-family:'Cormorant Garamond',serif; font-size:15px;
+    color:var(--ash); line-height:1.75;
+  }
+
+  /* ── RULE LIST ── */
+  .rule-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:24px; }
+  @media(max-width:600px){ .rule-grid{ grid-template-columns:1fr; } }
+  .rule-card {
+    border:1px solid rgba(212,164,76,0.12); border-radius:3px; padding:18px 18px;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  .rule-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,164,76,0.38);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  }
+  .rule-card.do-card  { background:rgba(29,74,71,0.15); }
+  .rule-card.dont-card{ background:rgba(139,26,46,0.12); }
+  .rule-title {
+    font-family:'Cinzel',serif; font-size:11px; letter-spacing:.25em;
+    margin-bottom:12px; font-weight:600;
+  }
+  .rule-card.do-card   .rule-title { color:#5DC4BA; }
+  .rule-card.dont-card .rule-title { color:#E07080; }
+  .rule-item {
+    font-family:'Cormorant Garamond',serif; font-size:15px; line-height:1.7;
+    color:var(--ash); padding:5px 0; border-bottom:1px solid rgba(212,164,76,0.08);
+  }
+  .rule-item:last-child{ border-bottom:none; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align:center; padding:50px 24px 64px;
+    border-top:1px solid rgba(212,164,76,0.1); margin-top:20px;
+    position:relative; z-index:1;
+  }
+  .footer-handle {
+    display:inline-block; font-family:'Cinzel',serif; font-size:13px;
+    letter-spacing:.3em; color:var(--saffron);
+    border:1px solid rgba(232,135,74,0.35); padding:10px 28px; border-radius:2px;
+    margin-bottom:22px; cursor:default;
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+  .footer-handle:hover {
+    background:rgba(232,135,74,0.1); border-color:rgba(232,135,74,0.7);
+    box-shadow:0 0 24px rgba(232,135,74,0.22); transform:scale(1.03);
+  }
+  footer p {
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:17px; color:var(--ash); max-width:500px; margin:0 auto 14px; line-height:1.7;
+  }
+  footer .tagline-hindi { font-size:15px; color:rgba(212,164,76,0.6); }
+
+  /* ── ANIMATIONS ── */
+  .darshan-card { animation:fadeUp 0.55s ease both; }
+  .darshan-card:nth-child(1){ animation-delay:.05s; }
+  .darshan-card:nth-child(2){ animation-delay:.10s; }
+  .darshan-card:nth-child(3){ animation-delay:.15s; }
+  .darshan-card:nth-child(4){ animation-delay:.20s; }
+  .darshan-card:nth-child(5){ animation-delay:.25s; }
+  .darshan-card:nth-child(6){ animation-delay:.30s; }
+  .darshan-card:nth-child(7){ animation-delay:.35s; }
+  .darshan-card:nth-child(8){ animation-delay:.40s; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(24px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<svg class="mandala-bg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(250,250)" stroke="#D4A44C" fill="none" stroke-width="0.5">
+    <circle r="240"/><circle r="200"/><circle r="160"/><circle r="120"/><circle r="80"/><circle r="40"/>
+    <line x1="0" y1="-240" x2="0" y2="240"/><line x1="-240" y1="0" x2="240" y2="0"/>
+    <line x1="-170" y1="-170" x2="170" y2="170"/><line x1="170" y1="-170" x2="-170" y2="170"/>
+    <line x1="-240" y1="-100" x2="240" y2="100"/><line x1="-240" y1="100" x2="240" y2="-100"/>
+    <line x1="-100" y1="-240" x2="100" y2="240"/><line x1="100" y1="-240" x2="-100" y2="240"/>
+    <polygon points="0,-200 17,-6 200,0 17,6 0,200 -17,6 -200,0 -17,-6" opacity="0.3"/>
+  </g>
+</svg>
+
+<!-- HEADER -->
+<div class="header-wrap">
+  <div class="handle-tag">@tilakwithspecs</div>
+  <span class="om-symbol">ॐ</span>
+  <h1 class="main-title">Haveli Sangeet<br>Raag Guide</h1>
+  <p class="main-subtitle">Ashtayam Seva — The Eight Daily Darshans of Shri Thakur Ji</p>
+  <p class="hindi-intro">अष्टयाम सेवा में राग और भाव विधान — पुष्टिमार्गीय परम्परा</p>
+</div>
+
+<div class="decorative-border"></div>
+
+<main>
+
+  <!-- WHAT IS HAVELI SANGEET -->
+  <div class="section-header">
+    <span class="section-label">The Foundation</span>
+    <h2 class="section-title">What is <strong>Haveli Sangeet?</strong></h2>
+  </div>
+
+  <div class="intro-card">
+    <p>Haveli Sangeet is the devotional music tradition of Pushtimarg, established by Gosaiji <strong style="color:var(--gold-light)">Shri Vitthalnathji</strong> (son of Shri Vallabhacharyaji) in the 16th century. It is one of the oldest and most preserved forms of Indian classical music, rooted in the ancient <em>Drupad-Dhamar</em> tradition.</p>
+    <p>The word <em>"Haveli"</em> refers to the grand mansion-temples where Shri Thakur Ji resides. <em>"Sangeet"</em> means music. So Haveli Sangeet is literally — <strong style="color:var(--gold-light)">the music of the divine mansion.</strong></p>
+    <p class="hindi">हवेली संगीत केवल गायन नहीं है — यह प्रभु श्री ठाकुर जी की सेवा का एक दिव्य अंग है। जो सुर आलापा जाता है, वह प्रभु के चरणों में अर्पित होता है।</p>
+  </div>
+
+  <!-- THREE PILLARS -->
+  <div class="two-col">
+    <div class="info-box">
+      <span class="info-box-title">The Three Pillars of Seva</span>
+      <p class="info-box-text">Shri Vitthalnathji expanded worship into three inseparable pillars: <strong style="color:var(--gold-light)">Raag</strong> (music), <strong style="color:var(--gold-light)">Bhog</strong> (food offerings), and <strong style="color:var(--gold-light)">Shringar</strong> (adornment). Each supports the other — Raag creates the bhav, Shringar beautifies the swaroop, Bhog nourishes Prabhu.</p>
+    </div>
+    <div class="info-box">
+      <span class="info-box-title">The Drupad Tradition</span>
+      <p class="info-box-text">Haveli Sangeet preserves <strong style="color:var(--gold-light)">Drupad</strong> — the oldest form of Indian classical music. While Drupad nearly vanished in the 18th century with the rise of Khayaal, the Pushtimarg havelis kept it alive for over <strong style="color:var(--gold-light)">500 years.</strong> Instruments: Pakhawaj, Sarangi, Tanpura, Veena, Flute, Jhanz.</p>
+    </div>
+  </div>
+
+  <!-- ASHTACHHAP -->
+  <div class="section-header" style="margin-top:40px;">
+    <span class="section-label">The Eight Poet-Devotees</span>
+    <h2 class="section-title">The <strong>Ashta Chaap</strong></h2>
+  </div>
+
+  <div class="intro-card">
+    <p>To formalize Haveli Sangeet, Shri Vitthalnathji appointed <strong style="color:var(--gold-light)">Ashtachhap</strong> — eight poet-devotees who composed kirtans in specific raags for the Ashtayam Seva. Their compositions remain the living heart of Haveli Sangeet today.</p>
+    <div class="two-col" style="margin-top:16px;">
+      <div>
+        <p style="margin-bottom:8px;"><strong style="color:var(--gold-light)">Sevaks of Shri Mahaprabhuji:</strong></p>
+        <p>Shri Surdas — 1,25,000 padas (5,000 survive)</p>
+        <p>Shri Kumbhandas — First to sing kirtan before Shri Thakur Ji</p>
+        <p>Shri Paramanandas — 2,000 padas</p>
+        <p>Shri Krishnadas — 1,200 padas</p>
+        <p>Shri Vishnudas Chippa — later replaced by Shri Nanddas</p>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;"><strong style="color:var(--gold-light)">Sevaks of Shri Vitthalnathji:</strong></p>
+        <p>Shri Govindswami — 400 padas</p>
+        <p>Shri Chaturbhujdas — 200 padas</p>
+        <p>Shri Chittaswami — 200 padas</p>
+        <p>Shri Nanddas — 300 padas (cousin of Tulsidas)</p>
+        <p class="hindi" style="margin-top:8px; font-size:14px;">अष्टछाप मण्डल — सन् १६०२ में पूर्ण हुआ।</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT MAKES IT UNIQUE -->
+  <div class="section-header">
+    <span class="section-label">Distinctive Features</span>
+    <h2 class="section-title">What Makes Haveli Sangeet <strong>Unique?</strong></h2>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:40px;">
+    <div class="info-box" style="text-align:center; padding:22px 16px;">
+      <span style="font-size:30px; display:block; margin-bottom:12px;">🎵</span>
+      <span class="info-box-title" style="display:block; text-align:center; margin-bottom:8px;">Not for Entertainment</span>
+      <p class="info-box-text" style="text-align:center; font-size:14px;">Sung exclusively for Shri Thakur Ji's pleasure. The kirtankaar faces the deity — not the audience. This is seva, not performance.</p>
+    </div>
+    <div class="info-box" style="text-align:center; padding:22px 16px;">
+      <span style="font-size:30px; display:block; margin-bottom:12px;">⏳</span>
+      <span class="info-box-title" style="display:block; text-align:center; margin-bottom:8px;">The Prahar System</span>
+      <p class="info-box-text" style="text-align:center; font-size:14px;">Each raag belongs to a specific time of day. Singing the wrong raag at the wrong time disturbs the natural cosmic energy. The day has its own raga-grammar.</p>
+    </div>
+    <div class="info-box" style="text-align:center; padding:22px 16px;">
+      <span style="font-size:30px; display:block; margin-bottom:12px;">🌿</span>
+      <span class="info-box-title" style="display:block; text-align:center; margin-bottom:8px;">500 Years Unbroken</span>
+      <p class="info-box-text" style="text-align:center; font-size:14px;">While Drupad nearly vanished from Indian classical music, Pushtimarg havelis preserved it without interruption for five centuries.</p>
+    </div>
+  </div>
+  @media(max-width:600px){ main > div[style*="grid-template-columns:repeat(3"] { grid-template-columns:1fr !important; } }
+
+  <div class="decorative-border"></div>
+
+  <!-- ASHTAYAM OVERVIEW -->
+  <div class="section-header">
+    <span class="section-label">The Full Day at a Glance</span>
+    <h2 class="section-title">Ashtayam — <strong>Eight Darshans</strong></h2>
+  </div>
+
+  <div class="darshan-card" style="margin-bottom:44px; animation:none;">
+    <div class="card-body" style="padding:0;">
+      <div class="overview-row">
+        <span class="ov-time">~4:30 – 6:00 AM</span>
+        <span class="ov-name">Mangala</span>
+        <span class="ov-hindi">मंगला — प्रभु का निद्रा से जगना</span>
+        <span class="ov-raags">Bhairav · Lalit · Ramkali</span>
+      </div>
+      <div class="overview-row">
+        <span class="ov-time">~7:00 – 8:00 AM</span>
+        <span class="ov-name">Shringar</span>
+        <span class="ov-hindi">श्रृंगार — वस्त्राभूषण सेवा</span>
+        <span class="ov-raags">Bilawal · Bhupali · Sorath · Dhanashree</span>
+      </div>
+      <div class="overview-row">
+        <span class="ov-time">~9:00 – 10:00 AM</span>
+        <span class="ov-name">Gwal</span>
+        <span class="ov-hindi">ग्वाल — गोचरण झाँकी</span>
+        <span class="ov-raags">Gaud Sarang · Vrundavani · Dhanashri</span>
+      </div>
+      <div class="overview-row">
+        <span class="ov-time">~11:00 AM – 12 PM</span>
+        <span class="ov-name">Rajbhog</span>
+        <span class="ov-hindi">राजभोग — दोपहर का भोग</span>
+        <span class="ov-raags">Shuddh Sarang · Multani · Bilawal</span>
+      </div>
+      <div class="overview-row">
+        <span class="ov-time">~3:00 – 4:00 PM</span>
+        <span class="ov-name">Utthapan</span>
+        <span class="ov-hindi">उत्थापन — विश्राम के बाद जगना</span>
+        <span class="ov-raags">Shuddh Sarang · Nat · Bhimpalasi</span>
+      </div>
+      <div class="overview-row">
+        <span class="ov-time">~4:30 – 5:30 PM</span>
+        <span class="ov-name">Bhog / Aarti</span>
+        <span class="ov-hindi">भोग आरती — सायं भोग</span>
+        <span class="ov-raags">Kanhra · Yaman · Bhimpalasi</span>
+      </div>
+      <div class="overview-row">
+        <span class="ov-time">~6:30 – 7:00 PM</span>
+        <span class="ov-name">Sandhya Aarti</span>
+        <span class="ov-hindi">संध्या आरती — गोधूलि वेला</span>
+        <span class="ov-raags">Yaman · Hamir · Purvi · Sorath</span>
+      </div>
+      <div class="overview-row">
+        <span class="ov-time">~8:30 – 9:30 PM</span>
+        <span class="ov-name">Shayan</span>
+        <span class="ov-hindi">शयन — रात्रि विश्राम</span>
+        <span class="ov-raags">Bihag · Darbari · Kanharo · Adana</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-ornament"><span>✦</span></div>
+
+  <!-- DETAILED DARSHAN CARDS -->
+  <div class="section-header">
+    <span class="section-label">Darshan by Darshan</span>
+    <h2 class="section-title">Raags, Bhaav & <strong>Sacred Kirtans</strong></h2>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       1. MANGALA
+  ════════════════════════════════════════════════════ -->
+  <div class="darshan-card card-mangala">
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <span class="card-number">01 · First Darshan</span>
+          <h3 class="darshan-name">Mangala Darshan</h3>
+          <p class="darshan-hindi">मंगला — प्रभु श्री ठाकुर जी का प्रथम निद्रा से जगना</p>
+        </div>
+        <span class="time-badge">~4:30 – 6:00 AM</span>
+      </div>
+
+      <p class="darshan-desc">The day begins in the deepest stillness before dawn. Shri Thakur Ji is awakened with the blowing of the conch shell and the gentle unfolding of morning raags. The conch calls first — then the pakhawaj, tanpura, and flute. The bhav is of the most tender waking: a mother calling her beloved child from sleep.</p>
+
+      <span class="raag-section-label">Primary Raags</span>
+      <div class="raag-pills">
+        <span class="raag-pill">Raag Bhairav</span>
+        <span class="raag-pill">Raag Lalit</span>
+        <span class="raag-pill">Raag Ramkali</span>
+        <span class="raag-pill">Raag Bibhas</span>
+      </div>
+
+      <span class="raag-section-label" style="margin-top:4px;">Bhaav of Mangala Seva</span>
+      <div class="bhav-tags">
+        <span class="bhav-tag">जागरण — Awakening</span>
+        <span class="bhav-tag">वात्सल्य — Motherly Love</span>
+        <span class="bhav-tag">प्रभात — Dawn Solemnity</span>
+        <span class="bhav-tag">अनुराग — Deep Devotion</span>
+        <span class="bhav-tag">खंडिता — Spurned Longing</span>
+        <span class="bhav-tag">दाहीमंथन — Churning of Curd</span>
+      </div>
+
+      <div class="two-col">
+        <div class="bhav-cell">
+          <span class="bhav-key">Raag Bhairav</span>
+          <span class="bhav-val">The quintessential dawn raag — solemn, devotional, deeply peaceful. Komal Rishabh and Dhaivat give it a quality of total surrender at Prabhu's feet.</span>
+        </div>
+        <div class="bhav-cell">
+          <span class="bhav-key">Raag Lalit</span>
+          <span class="bhav-val">Sung just before sunrise. Its rare double-Madhyam structure creates a tender, incomplete longing — as if the soul is calling out to Prabhu to open His eyes.</span>
+        </div>
+      </div>
+
+      <!-- KIRTAN 1 -->
+      <div class="kirtan-block">
+        <span class="kirtan-label">Kirtan — Mangala Pada · Vatsalya Bhav</span>
+        <p class="kirtan-title">जागिये गोपाल लाल जननी बलि जाई</p>
+        <div class="kirtan-lines">
+          उठो तात भयो प्रात रजनी को तिमिर घट्यो,<br>
+          आये सब ग्वालबाल मोहना कन्हाई ॥<br><br>
+          <span class="antra">उठो मेरे आनंद कंद, चंद किरण मंद भई,<br>
+          प्रकट्यो आकाश भानु कमलन सुखदाई।<br>
+          संगी सब चरात धेनु, तुम बिना न बाजी वेणु,<br>
+          उठो लाल तजो सेज सुंदर वरराई ॥</span>
+        </div>
+      </div>
+
+      <!-- KIRTAN 2 -->
+      <div class="kirtan-block" style="margin-top:14px;">
+        <span class="kirtan-label">Kirtan — Mangala Pada · Shri Surdas Ji</span>
+        <p class="kirtan-title">जागिये ब्रजराज कुंवर कमल कोश फूले</p>
+        <div class="kirtan-lines">
+          कुमुदिनी जिय सकुच रही, भृंगलता झूले ॥<br>
+          तमचर खग रोर करत, बोलत बन मांहि,<br>
+          <span class="antra">रांभत गऊ मधुर नाद, बच्छन हित धाई ॥<br>
+          'सूर' श्री गोपाल उठे आनन्द मंगलकारी ॥</span>
+        </div>
+      </div>
+
+      <div class="example-box" style="margin-top:16px;">
+        <span class="example-label">Historical Note</span>
+        <p class="example-text">The very first kirtan of Pushtimarg was sung by Shri Kumbhandasji at <span class="hindi-eg">Mangala</span> in Bilaval Raag and Dhammar Taal — with the bhav of <span class="hindi-eg">खंडिता</span> (the spurned beloved). This kirtan, "सांझ के सांचे बोल तिहारे," gave birth to the entire kirtan tradition of Pushtimarg.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       2. SHRINGAR
+  ════════════════════════════════════════════════════ -->
+  <div class="darshan-card card-shringar">
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <span class="card-number">02 · Second Darshan</span>
+          <h3 class="darshan-name">Shringar Darshan</h3>
+          <p class="darshan-hindi">श्रृंगार — वस्त्र, आभूषण, अर्पण की सेवा</p>
+        </div>
+        <span class="time-badge">~7:00 – 8:00 AM</span>
+      </div>
+
+      <p class="darshan-desc">After being gently bathed, Shri Thakur Ji is adorned with seasonal clothes and jewellery — pearls in summer, precious stones in winter, gold in spring. The kirtankaar sings as each ornament is lovingly offered. The raags here are joyful and radiant, celebrating the beauty of the adorned beloved.</p>
+
+      <span class="raag-section-label">Primary Raags</span>
+      <div class="raag-pills">
+        <span class="raag-pill">Raag Bilawal</span>
+        <span class="raag-pill">Raag Bhupali</span>
+        <span class="raag-pill">Raag Sorath</span>
+        <span class="raag-pill">Raag Dhanashree</span>
+        <span class="raag-pill">Raag Hindol</span>
+        <span class="raag-pill">Raag Malhar (monsoon)</span>
+      </div>
+
+      <span class="raag-section-label" style="margin-top:4px;">Bhaav of Shringar Seva</span>
+      <div class="bhav-tags">
+        <span class="bhav-tag">सौंदर्य — Divine Beauty</span>
+        <span class="bhav-tag">हर्ष — Joyful Celebration</span>
+        <span class="bhav-tag">स्नेह — Affectionate Love</span>
+        <span class="bhav-tag">उत्सव — Festivity</span>
+        <span class="bhav-tag">दासी भाव — Handmaiden's Love</span>
+        <span class="bhav-tag">ऋतु भाव — Seasonal Devotion</span>
+      </div>
+
+      <div class="kirtan-block">
+        <span class="kirtan-label">Kirtan — Shringar Pada</span>
+        <p class="kirtan-title">आओ गोपाल श्रृंगार बनाऊ</p>
+        <div class="kirtan-lines">
+          विविध सुगंधन करो उबटनो, पाछे उष्णजल ले जू न्हवावू ॥<br>
+          अंग अंगोछ गुहूं तेरी बेनी, फूलन रची रची भाल बनाऊ।<br>
+          <span class="antra">सुरंग पाग जरतारी तोरा, रत्नखचित शिरपेच बंधाऊ ॥<br>
+          गजमोतींन के हार मनोहर, वनमाला ले उर पहेराऊ।<br>
+          ले दर्पण देखो मेरे प्यारे, निरख निरख उर नयन सिराऊ ॥</span>
+        </div>
+      </div>
+
+      <div class="kirtan-block" style="margin-top:14px;">
+        <span class="kirtan-label">Kirtan — Shringar Pada · Shri Nanddas Ji</span>
+        <p class="kirtan-title">नंद भवन को भूषण माई</p>
+        <div class="kirtan-lines">
+          यशुदा को लाल, वीर हलधर को, राधारमण सदा सुखदाई ॥<br>
+          <span class="antra">इंद्र को इंद्र, देव देवन को, ब्रह्म को ब्रह्म, महा बलदाई।<br>
+          'नंददास' को जीवन गिरिधर, गोकुल मंडन कुंवर कन्हाई ॥</span>
+        </div>
+      </div>
+
+      <div class="example-box" style="margin-top:16px;">
+        <span class="example-label">Seasonal Shringar Note</span>
+        <p class="example-text"><span class="hindi-eg">ऋतु के अनुसार राग और श्रृंगार दोनों बदलते हैं।</span> In summer — pearls and white clothes. In monsoon — Malhar and green. In winter — precious stones and red. In spring — Hindol-Basant and yellow. This is one of the most beautiful expressions of Pushtimarg's attentiveness to Prabhu's comfort.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       3. GWAL
+  ════════════════════════════════════════════════════ -->
+  <div class="darshan-card card-gwal">
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <span class="card-number">03 · Third Darshan</span>
+          <h3 class="darshan-name">Gwal Darshan</h3>
+          <p class="darshan-hindi">ग्वाल — माखन चोरी, वात्सल्य, गोचरण की झाँकी</p>
+        </div>
+        <span class="time-badge">~9:00 – 10:00 AM</span>
+      </div>
+
+      <p class="darshan-desc">Shri Thakur Ji sets off with the cowherd boys into the forests of Vraj. The kirtans burst open with the playfulness of childhood — butter-stealing, mischief, the laughter of Nandnandan. The raags are bright, pastoral, and full of energy — capturing the freshness of a Vraj morning in full sunlight.</p>
+
+      <span class="raag-section-label">Primary Raags</span>
+      <div class="raag-pills">
+        <span class="raag-pill">Raag Gaud Sarang</span>
+        <span class="raag-pill">Raag Vrundavani Sarang</span>
+        <span class="raag-pill">Raag Dhanashri</span>
+        <span class="raag-pill">Raag Gauri</span>
+        <span class="raag-pill">Raag Kanharo</span>
+      </div>
+
+      <span class="raag-section-label" style="margin-top:4px;">Bhaav of Gwal Seva</span>
+      <div class="bhav-tags">
+        <span class="bhav-tag">वात्सल्य — Parental Love</span>
+        <span class="bhav-tag">बाल लीला — Childhood Play</span>
+        <span class="bhav-tag">माखन चोरी — Butter Theft</span>
+        <span class="bhav-tag">सखा भाव — Friendship</span>
+        <span class="bhav-tag">उत्साह — Energetic Joy</span>
+      </div>
+
+      <div class="kirtan-block">
+        <span class="kirtan-label">Kirtan — Gwal Pada · Shri Paramanandas Ji</span>
+        <p class="kirtan-title">गोपाल माई खेलत है चकडोरी</p>
+        <div class="kirtan-lines">
+          लरका पांच सात संग लीने, निपट सांकरी खोरी ॥<br>
+          चढ घर होंरी झरोखा चितयो, सखी लियो मन चोरी।<br>
+          <span class="antra">बांए हाथ वलैया लीनी, अपनो अंचर छोरी ॥<br>
+          चारों नयन मिले जब सन्मुख, रसिक हँसे मुख मोर।<br>
+          परमानंद दास रतिनागर, चित में लई रति जोर ॥</span>
+        </div>
+      </div>
+
+      <div class="example-box" style="margin-top:16px;">
+        <span class="example-label">Vrundavani Sarang — The Forest Raag</span>
+        <p class="example-text">Raag Vrundavani Sarang carries the soul of Vrindavan's forests — <span class="hindi-eg">वृन्दावन के कुञ्जों की छाया।</span> Its bright, mid-morning energy is inseparable from the image of Prabhu playing among the cowherd boys. This raag belongs exclusively to this hour, this lila.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       4. RAJBHOG
+  ════════════════════════════════════════════════════ -->
+  <div class="darshan-card card-rajbhog">
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <span class="card-number">04 · Fourth Darshan</span>
+          <h3 class="darshan-name">Rajbhog Darshan</h3>
+          <p class="darshan-hindi">राजभोग — दोपहर का मुख्य एवं भव्य भोग</p>
+        </div>
+        <span class="time-badge">~11:00 AM – 12 PM</span>
+      </div>
+
+      <p class="darshan-desc">The grandest bhog of the day — an elaborate offering worthy of a reigning monarch. Shri Thakur Ji returns from the forest and is served the midday meal with full royal honours. The raags here are majestic and full-bodied, reflecting the peak energy of noon. After Rajbhog, Prabhu rests.</p>
+
+      <span class="raag-section-label">Primary Raags</span>
+      <div class="raag-pills">
+        <span class="raag-pill">Raag Gaud Sarang</span>
+        <span class="raag-pill">Raag Shuddh Sarang</span>
+        <span class="raag-pill">Raag Noor Sarang</span>
+        <span class="raag-pill">Raag Multani</span>
+        <span class="raag-pill">Raag Bilawal</span>
+        <span class="raag-pill">Raag Hindol Vasant</span>
+      </div>
+
+      <span class="raag-section-label" style="margin-top:4px;">Bhaav of Rajbhog Seva</span>
+      <div class="bhav-tags">
+        <span class="bhav-tag">प्रेम — Deep Love</span>
+        <span class="bhav-tag">राजभाव — Royal Majesty</span>
+        <span class="bhav-tag">तृप्ति — Satisfaction</span>
+        <span class="bhav-tag">दासभाव — Servant's Offering</span>
+        <span class="bhav-tag">समर्पण — Complete Surrender</span>
+        <span class="bhav-tag">मधुर — Sweetness</span>
+      </div>
+
+      <div class="kirtan-block">
+        <span class="kirtan-label">Kirtan — Rajbhog Pada · Shri Paramanandas Ji</span>
+        <p class="kirtan-title">आज दधि मीठो मदन गोपाल</p>
+        <div class="kirtan-lines">
+          भावत मोहि तिहारो झूंठो चंचल नैन बिसाल ॥<br>
+          आने पात बनाये दोना दिये सबनको बांट।<br>
+          <span class="antra">जिन नहिं पायो सुनो रे भैया मेरी अंगुरिन चाट ॥<br>
+          बहुत दिनन हम रहे कुमुदवन कृष्ण तिहारे साथ।<br>
+          परमानंद प्रभु हम सब जानत तुम त्रिभुवन के भूप ॥</span>
+        </div>
+      </div>
+
+      <div class="kirtan-block" style="margin-top:14px;">
+        <span class="kirtan-label">Kirtan — Rajbhog Pada · Shri Govindswami Ji</span>
+        <p class="kirtan-title">ऐसी प्रीति कहूँ नहि देखी</p>
+        <div class="kirtan-lines">
+          जसुमति-सुत वल्लभ-सुत जैसी सेस सहस मुख जात न लेखी ॥<br>
+          <span class="antra">आग्यां माँगि चलत गोकुल को छिनु छिनु झाँकि झरोखन पेखी।<br>
+          'गोविंद' प्रभु गोवद्धन पै माँगत बिछुरो पल जिन अर्ध निमेखी ॥</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       5. UTTHAPAN
+  ════════════════════════════════════════════════════ -->
+  <div class="darshan-card card-utthapan">
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <span class="card-number">05 · Fifth Darshan</span>
+          <h3 class="darshan-name">Utthapan Darshan</h3>
+          <p class="darshan-hindi">उत्थापन — दोपहर के विश्राम के उपरांत जगना</p>
+        </div>
+        <span class="time-badge">~3:00 – 4:00 PM</span>
+      </div>
+
+      <p class="darshan-desc">Prabhu is awakened from the afternoon rest. Unlike Mangala's solemn dawn-breaking, Utthapan has a softer, more intimate quality — there is affectionate insistence, the playful urgency of a mother calling her child back from play. The scene returns to gocharan in the afternoon light.</p>
+
+      <span class="raag-section-label">Primary Raags</span>
+      <div class="raag-pills">
+        <span class="raag-pill">Raag Shuddh Sarang</span>
+        <span class="raag-pill">Raag Vrundavani Sarang</span>
+        <span class="raag-pill">Raag Nat</span>
+        <span class="raag-pill">Raag Gauri</span>
+        <span class="raag-pill">Raag Bhimpalasi</span>
+      </div>
+
+      <span class="raag-section-label" style="margin-top:4px;">Bhaav of Utthapan Seva</span>
+      <div class="bhav-tags">
+        <span class="bhav-tag">प्रेमाकुलता — Loving Urgency</span>
+        <span class="bhav-tag">विरह — Gentle Longing</span>
+        <span class="bhav-tag">आकुलता — Restless Waiting</span>
+        <span class="bhav-tag">वात्सल्य — Parental Tenderness</span>
+        <span class="bhav-tag">सांध्य-भाव — Afternoon Peace</span>
+      </div>
+
+      <div class="kirtan-block">
+        <span class="kirtan-label">Kirtan — Utthapan Pada</span>
+        <p class="kirtan-title">आओ मेरे गोविंद गोकुल के चंदा</p>
+        <div class="kirtan-lines">
+          भई बडी वार खेलत यमुना तट वदन दिखाय देउ आनंदा ॥<br>
+          <span class="antra">गाय आवन की भई है विरियां दिनमणि किरण होत अति मंदा।<br>
+          आये मेरे तात मात छतियां लाग गोविंद प्रभु व्रज-जन सुखकंदा ॥</span>
+        </div>
+      </div>
+
+      <div class="kirtan-block" style="margin-top:14px;">
+        <span class="kirtan-label">Kirtan — Utthapan Pada · Govind Bala</span>
+        <p class="kirtan-title">मोहन नयन नहुंते नहिं टरत</p>
+        <div class="kirtan-lines">
+          विन देखे तालावेली सी लागत देखत मन जो हरत ॥<br>
+          <span class="antra">अशन वसन सेन न की सुध आवे अब कछू न करत।<br>
+          गोविंद बल इम कहत पियारी तृसिख देरी के सेक आवे भरत ॥</span>
+        </div>
+      </div>
+
+      <div class="example-box" style="margin-top:16px;">
+        <span class="example-label">Bhimpalasi — The Transitional Raag</span>
+        <p class="example-text">Raag Bhimpalasi bridges afternoon and evening — its komal Gandhar and Nishad create a contemplative, slightly longing quality. <span class="hindi-eg">यह राग भावुकता और शांति का अनूठा संगम है</span> — the perfect raag for the softened light of late afternoon when Prabhu is gently roused.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       6. BHOG / AARTI
+  ════════════════════════════════════════════════════ -->
+  <div class="darshan-card card-bhog">
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <span class="card-number">06 · Sixth Darshan</span>
+          <h3 class="darshan-name">Bhog Darshan &amp; Aarti</h3>
+          <p class="darshan-hindi">भोग आरती — गोपी-भाव, मुरली, युगल-किशोर आरती</p>
+        </div>
+        <span class="time-badge">~4:30 – 5:30 PM</span>
+      </div>
+
+      <p class="darshan-desc">An evening bhog is offered with deep intimacy. Kirtans here are enriched with Gopidasha (the perspective of the gopis), Murali bhav (the call of the flute), and the love of Prabhu's devotees as He moves through the evening. The aarti of Yugal Kishor is performed — and the raags deepen with the falling light.</p>
+
+      <span class="raag-section-label">Primary Raags</span>
+      <div class="raag-pills">
+        <span class="raag-pill">Raag Kanhra (Kanharo)</span>
+        <span class="raag-pill">Raag Yaman</span>
+        <span class="raag-pill">Raag Gaud Sarang</span>
+        <span class="raag-pill">Raag Bhimpalasi</span>
+      </div>
+
+      <span class="raag-section-label" style="margin-top:4px;">Bhaav of Bhog Seva</span>
+      <div class="bhav-tags">
+        <span class="bhav-tag">मुरली भाव — Flute's Call</span>
+        <span class="bhav-tag">गोपी दशा — Gopi's Longing</span>
+        <span class="bhav-tag">प्रेम — Divine Love</span>
+        <span class="bhav-tag">गोपा भाव — Cowherd's Joy</span>
+        <span class="bhav-tag">आरती भाव — Devotional Aarti</span>
+        <span class="bhav-tag">कृष्ण रूप — Form Contemplation</span>
+      </div>
+
+      <div class="kirtan-block">
+        <span class="kirtan-label">Kirtan — Bhog Pada · Shri Chittaswami Ji</span>
+        <p class="kirtan-title">आगे गाय पाछें गाय इत गाय उत गाय</p>
+        <div class="kirtan-lines">
+          गोविंद को गायन में बस बोइ भावे।<br>
+          गायन के संग धावें, गायन में सचु पावें,<br>
+          <span class="antra">गायन की खुर रज अंग लपटावे ॥<br>
+          गायन सो ब्रज छायो, बैकुंठ बिसरायो,<br>
+          'छीतस्वामी' गिरिधारी, विट्ठलेश वपुधारी,<br>
+          ग्वारिया को भेष धरें गायन में आवे ॥</span>
+        </div>
+      </div>
+
+      <div class="kirtan-block" style="margin-top:14px;">
+        <span class="kirtan-label">Kirtan — Aarti Pada · Shri Paramanandas Ji</span>
+        <p class="kirtan-title">आरती युगल किशोर की कीजे</p>
+        <div class="kirtan-lines">
+          तन मन धन न्योछावर दीजे ॥<br>
+          गौर श्याम मुख निरखत जीजे, प्रेम-स्वरूप नयन भर पीजे ॥<br>
+          <span class="antra">रवि शशि कोटि वदन की शोभा, ताहि देखत मेरो मन लोभा ॥<br>
+          नंद-नंदन वृषभान-किशोरी, परमानंद प्रभु अविचल जोरी ॥</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       7. SANDHYA AARTI
+  ════════════════════════════════════════════════════ -->
+  <div class="darshan-card card-sandhya">
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <span class="card-number">07 · Seventh Darshan</span>
+          <h3 class="darshan-name">Sandhya Aarti</h3>
+          <p class="darshan-hindi">संध्या आरती — माँ यशोदा द्वारा आरती, गोधूलि की झाँकी</p>
+        </div>
+        <span class="time-badge">~6:30 – 7:00 PM</span>
+      </div>
+
+      <p class="darshan-desc">As the cows return home and the golden dust of dusk rises on the Vraj paths, mother Yashoda performs the aarti of Shri Thakur Ji. This is Godohan — the milking of cows. The raags are suffused with viraha (longing) and the warmth of homecoming. This is perhaps the most emotionally vivid and moving darshan of the day.</p>
+
+      <span class="raag-section-label">Primary Raags</span>
+      <div class="raag-pills">
+        <span class="raag-pill">Raag Sorath</span>
+        <span class="raag-pill">Raag Yaman</span>
+        <span class="raag-pill">Raag Hamir</span>
+        <span class="raag-pill">Raag Purvi</span>
+        <span class="raag-pill">Raag Puriya</span>
+      </div>
+
+      <span class="raag-section-label" style="margin-top:4px;">Bhaav of Sandhya Aarti</span>
+      <div class="bhav-tags">
+        <span class="bhav-tag">विरह — Loving Separation</span>
+        <span class="bhav-tag">गोधूलि — Dusty Dusk</span>
+        <span class="bhav-tag">माधुर्य — Sweet Longing</span>
+        <span class="bhav-tag">यशोदा भाव — Mother's Aarti</span>
+        <span class="bhav-tag">प्रतीक्षा — Anticipation</span>
+        <span class="bhav-tag">गोपिका प्रेम — Gopi Love</span>
+      </div>
+
+      <div class="two-col">
+        <div class="bhav-cell">
+          <span class="bhav-key">Raag Purvi</span>
+          <span class="bhav-val">Deeply twilight — its flat Rishabh and Dhaivat with sharp Madhyam create a bittersweet, aching longing unique to the dusk hour. One of the most evocative raags in the tradition.</span>
+        </div>
+        <div class="bhav-cell">
+          <span class="bhav-key">Raag Hamir</span>
+          <span class="bhav-val">Majestic and full-hearted. As Prabhu returns home in the evening light, Hamir reflects the grandeur and celebration of His homecoming to Yashoda's arms.</span>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <span class="example-label">The Bhav of Sandhya — गोधूलि</span>
+        <p class="example-text"><span class="hindi-eg">गोधूलि की वेला में जब गाएँ घर लौटती हैं, तब माँ यशोदा आरती उतारती हैं।</span> The dust of the cows' hooves in the golden evening — this is the eternal, irreplaceable image of Sandhya in Pushtimarg. Every evening aarti in every haveli, everywhere in the world, recreates this exact moment in Vraj.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       8. SHAYAN
+  ════════════════════════════════════════════════════ -->
+  <div class="darshan-card card-shayan">
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <span class="card-number">08 · Eighth Darshan</span>
+          <h3 class="darshan-name">Shayan Darshan</h3>
+          <p class="darshan-hindi">शयन — निकुञ्ज में रात्रि विश्राम, संयोग श्रृंगार</p>
+        </div>
+        <span class="time-badge">~8:30 – 9:30 PM</span>
+      </div>
+
+      <p class="darshan-desc">The day's final darshan — dinner is offered, and Shri Thakur Ji is prepared for rest. Kirtans here enter the deepest and most intimate register of the entire tradition — describing the Nikunj bhavana (the secret bower of Vrindavan) and sanyog shringar. These raags are deep, nocturnal, slow — a lullaby for Prabhu Himself.</p>
+
+      <span class="raag-section-label">Primary Raags</span>
+      <div class="raag-pills">
+        <span class="raag-pill">Raag Bihag</span>
+        <span class="raag-pill">Raag Darbari</span>
+        <span class="raag-pill">Raag Kanharo</span>
+        <span class="raag-pill">Raag Malkauns</span>
+        <span class="raag-pill">Raag Adana</span>
+        <span class="raag-pill">Raag Nayaki</span>
+        <span class="raag-pill">Raag Hamir</span>
+        <span class="raag-pill">Raag Yaman</span>
+      </div>
+
+      <span class="raag-section-label" style="margin-top:4px;">Bhaav of Shayan Seva</span>
+      <div class="bhav-tags">
+        <span class="bhav-tag">निकुञ्ज भाव — Bower's Intimacy</span>
+        <span class="bhav-tag">संयोग — Divine Union</span>
+        <span class="bhav-tag">शांति — Utter Peace</span>
+        <span class="bhav-tag">नायिका भाव — Beloved's Longing</span>
+        <span class="bhav-tag">मधुर विरह — Sweet Separation</span>
+        <span class="bhav-tag">लोरी — Divine Lullaby</span>
+      </div>
+
+      <div class="two-col">
+        <div class="bhav-cell">
+          <span class="bhav-key">Raag Bihag</span>
+          <span class="bhav-val">The quintessential late-night raag of devotion — rich, romantic, and suffused with divine love. Its smooth movement makes it the most fitting companion for Prabhu's rest.</span>
+        </div>
+        <div class="bhav-cell">
+          <span class="bhav-key">Raag Darbari</span>
+          <span class="bhav-val">Grand, slow, and immensely deep. Tansen is said to have composed it for Akbar's court at night. In the haveli, it carries the weight of the night's silence and surrender.</span>
+        </div>
+        <div class="bhav-cell">
+          <span class="bhav-key">Raag Adana</span>
+          <span class="bhav-val">Late-night, intense, and full of yearning. Used in Shayan to express the soul's deep longing for Prabhu — the devotee as lover, crying out in the night.</span>
+        </div>
+        <div class="bhav-cell">
+          <span class="bhav-key">Raag Nayaki</span>
+          <span class="bhav-val">A rare and intimate raag — <span style="color:rgba(212,164,76,0.8); font-style:italic;">नायकी भाव</span> — expressing the devotee as the beloved of Prabhu, in the madhura bhakti tradition. Sung only at this final hour.</span>
+        </div>
+      </div>
+
+      <div class="kirtan-block">
+        <span class="kirtan-label">Kirtan — Shayan Pada · Shri Vitthalnathji</span>
+        <p class="kirtan-title">सखियन रुचि रुचि सेज बनाई</p>
+        <div class="kirtan-lines">
+          रंग महल में पेरे हें परदा धरी अंगीठी सुखदाई ॥<br>
+          <span class="antra">शीत समें ग्रीष्म ऋतु कीनी अति सुंदर वरराईं।<br>
+          श्री विट्ठल गिरिधारी कृपानिधि पोढे ओढ रजाई ॥</span>
+        </div>
+      </div>
+
+      <div class="example-box" style="margin-top:16px;">
+        <span class="example-label">Shayan — The Deepest Bhav</span>
+        <p class="example-text">The kirtans of Shayan describe <span class="hindi-eg">निकुञ्ज — वृंदावन का वह गुप्त कुञ्ज जहाँ प्रभु विराजते हैं।</span> These are not sung for any audience. They are whispered in Prabhu's presence as He is laid to rest. This is the most intimate and sacred register of all of Pushtimarg seva.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-ornament" style="margin-top:50px;"><span>✦</span></div>
+
+  <!-- HOW TO DO RAAG SEVA -->
+  <div class="section-header">
+    <span class="section-label">Practical Guidance</span>
+    <h2 class="section-title">How to Perform <strong>Raag Seva</strong></h2>
+  </div>
+
+  <div class="intro-card" style="margin-bottom:24px;">
+    <p><strong style="color:var(--gold-light);">Raag Seva is not performance. It is seva.</strong></p>
+    <p>When you sing during darshan, you are serving Shri Thakur Ji by creating the right atmosphere for His lila. You are entering the lila yourself — not as a spectator but as a participant. You are aligning with cosmic time — matching the energy of the universe at that exact moment.</p>
+    <p class="hindi">राग सेवा में गायक श्रोताओं की ओर नहीं — प्रभु की ओर मुख करके गाता है। क्योंकि यह प्रदर्शन नहीं, यह प्रभु को प्रसन्न करने की सेवा है।</p>
+  </div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <div class="info-box">
+      <span class="info-box-title">Before You Begin</span>
+      <p class="info-box-text">
+        Purify yourself — bathe, wear clean clothes.<br><br>
+        Pranaam to your Guru and to Shri Thakur Ji — never sing without seeking blessings first.<br><br>
+        Pranaam to the Raag itself — the raag is divine, worthy of reverence.<br><br>
+        Know the time — confirm you are singing the correct raag for the prahar.
+      </p>
+    </div>
+    <div class="info-box">
+      <span class="info-box-title">After You Finish</span>
+      <p class="info-box-text">
+        Pranaam again — to Shri Thakur Ji, to the raag, and to your Guru.<br><br>
+        Sit in silence briefly — let the bhav settle before moving.<br><br>
+        <span style="color:rgba(212,164,76,0.8); font-style:italic;">जब तक भाव मन में है, उसे बाहर न जाने दें। वह क्षण भी सेवा है।</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- RULES -->
+  <div class="rule-grid">
+    <div class="rule-card do-card">
+      <p class="rule-title">✅ Do — अवश्य करें</p>
+      <p class="rule-item">Learn the prahar system — which raag goes at which time</p>
+      <p class="rule-item">Practice bhav — emotion matters more than technical mastery</p>
+      <p class="rule-item">Face the deity, not the audience — always</p>
+      <p class="rule-item">Let the raag breathe — don't rush the alaap</p>
+      <p class="rule-item">Listen to authentic Haveli Sangeet and learn from a Guru</p>
+      <p class="rule-item">Keep voice and instruments tuned and pure</p>
+    </div>
+    <div class="rule-card dont-card">
+      <p class="rule-title">❌ Don't — कदापि न करें</p>
+      <p class="rule-item">Never sing time-inappropriate raags — Bhairav at night disturbs cosmic energy</p>
+      <p class="rule-item">Don't rush through a kirtan — the purpose is mood, not completion</p>
+      <p class="rule-item">Don't perform for applause — this is seva, not a concert</p>
+      <p class="rule-item">Never sing without pranaam to Guru and Shri Thakur Ji first</p>
+      <p class="rule-item">Don't mix Khayaal-style improvisation with Drupad seva</p>
+    </div>
+  </div>
+
+  <!-- THREE BRANCHES -->
+  <div class="section-header">
+    <span class="section-label">Regional Traditions</span>
+    <h2 class="section-title">Three Branches of <strong>Haveli Sangeet</strong></h2>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:40px;">
+    <div class="info-box" style="text-align:center; padding:22px 16px;">
+      <span style="font-size:26px; display:block; margin-bottom:10px;">🏯</span>
+      <span class="info-box-title" style="display:block; text-align:center; margin-bottom:8px;">Nathdwara · Kankroli</span>
+      <p class="info-box-text" style="text-align:center; font-size:14px;">The most formal tradition — preserved in the main Shreenathji haveli in Rajasthan. The seat of the Tilakayat, a direct descendant of Shri Gusaiji.</p>
+    </div>
+    <div class="info-box" style="text-align:center; padding:22px 16px;">
+      <span style="font-size:26px; display:block; margin-bottom:10px;">🌊</span>
+      <span class="info-box-title" style="display:block; text-align:center; margin-bottom:8px;">Gokul · Mathura · Vrindavan</span>
+      <p class="info-box-text" style="text-align:center; font-size:14px;">Where it all began. The origin of Haveli Sangeet — where Shri Kumbhandasji first sang before Shri Thakur Ji at Govardhan.</p>
+    </div>
+    <div class="info-box" style="text-align:center; padding:22px 16px;">
+      <span style="font-size:26px; display:block; margin-bottom:10px;">🪷</span>
+      <span class="info-box-title" style="display:block; text-align:center; margin-bottom:8px;">Gujarat Tradition</span>
+      <p class="info-box-text" style="text-align:center; font-size:14px;">Ahmedabad, Vadodara, Surat, Jamnagar — when svaroops migrated during Aurangzeb's persecution. Distinct regional style, same sacred core.</p>
+    </div>
+  </div>
+
+  <!-- CLOSING THOUGHT -->
+  <div class="intro-card">
+    <p><strong style="color:var(--gold-light);">Why Haveli Sangeet Matters</strong></p>
+    <p>Haveli Sangeet is one of the oldest living music traditions in the world. When you sing raag seva — you are not just singing. You are continuing a 500-year-old lineage. You are not just performing — you are participating in the eternal lila of Shri Thakur Ji. You are not just making sound — you are offering your voice as seva.</p>
+    <p class="hindi">जो गाता है वह गायक नहीं, सेवक है। जो सुनता है वह श्रोता नहीं, भक्त है। हवेली संगीत में हर स्वर — प्रभु श्री ठाकुर जी के चरणों में अर्पण है।</p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-handle">@tilakwithspecs</div>
+  <p>"The best kirtan is not the one with the most elaborate raag — it is the one sung with the heart entirely surrendered."</p>
+  <p class="tagline-hindi">प्रभु श्री ठाकुर जी की सेवा में — हवेली संगीत, राग और भाव</p>
+  <p style="margin-top:18px; font-size:13px; color:rgba(140,123,107,0.4); font-family:'Cinzel',serif; letter-spacing:.15em;">PUSHTIMARG · HAVELI SANGEET · ASHTAYAM SEVA</p>
+</footer>
+
+</body>
+</html>
